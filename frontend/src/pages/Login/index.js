@@ -15,25 +15,27 @@ import {
 } from '@material-ui/core';
 
 import { Visibility, VisibilityOff } from '@material-ui/icons';
+
+import logo from "../../assets/login-logo.png";
+
 import { makeStyles } from "@material-ui/core/styles";
+
 import { i18n } from "../../translate/i18n";
 
 import { AuthContext } from "../../context/Auth/AuthContext";
-import { system } from "../../config.json";
-import logo from '../../assets/logo.png';
 
-const Copyright = () => {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      © {new Date().getFullYear()}
-      {" - "}
-      <Link color="inherit" href={system.url || "https://github.com/rtenorioh/Press-Ticket"}>
-        {system.name}
-      </Link>
-      {"."}
-    </Typography>
-  );
-};
+// const Copyright = () => {
+// 	return (
+// 		<Typography variant="body2" color="textSecondary" align="center">
+// 			{"Copyleft "}
+// 			<Link color="inherit" href="https://github.com/canove">
+// 				Canove
+// 			</Link>{" "}
+// 			{new Date().getFullYear()}
+// 			{"."}
+// 		</Typography>
+// 	);
+// };
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -72,10 +78,12 @@ const Login = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <img alt="logo" src={logo}></img>
+          <img src={logo} width="100%" alt="logo login"></img>
+          <Box marginTop={5} marginBottom={2}>
         <Typography component="h1" variant="h5">
           {i18n.t("login.title")}
         </Typography>
+          </Box>
         <form className={classes.form} noValidate onSubmit={handlSubmit}>
           <TextField
             variant="outlined"
@@ -109,7 +117,7 @@ const Login = () => {
                     aria-label="toggle password visibility"
                     onClick={() => setShowPassword((e) => !e)}
                   >
-                    {showPassword ? <VisibilityOff color="secondary" /> : <Visibility color="secondary" />}
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               )
@@ -126,19 +134,11 @@ const Login = () => {
           </Button>
           <Grid container>
             <Grid item>
-              <Link
-                href="#"
-                variant="body2"
-                component={RouterLink}
-                to="/signup"
-              >
-                {i18n.t("login.buttons.register")}
-              </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={8}><Copyright /></Box>
+      <Box mt={8}>{/* <Copyright /> */}</Box>
     </Container>
   );
 };
