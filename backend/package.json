@@ -15,6 +15,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@adiwajshing/baileys": "^5.0.0",
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@sentry/node": "^5.29.2",
     "@types/pino": "^6.3.4",
     "bcryptjs": "^2.4.3",
